@@ -1,0 +1,101 @@
+.container {
+  display: flex;
+  height: 75vh;
+  justify-content: center;
+  align-items:center;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  padding: 3em;
+  width: 500px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: .5em;
+  text-align: center;
+}
+.card > h1 {
+  margin-bottom: 1em;
+}
+
+.input{
+  padding: 1em;
+  width: 100%;
+  border-radius: .4em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.inputcontainer{
+  margin-bottom: 2em;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.button{
+  padding: 1em 2em;
+  flex: 1 1 50px;
+  margin: 1em;
+  background-color: #2968ab;
+  color: white;
+  border: none;
+  border-radius: .3em;
+  font-weight: bold;
+}
+
+
+
+.button:hover{
+  background-color: #4187d1;
+
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.link{
+  color: #2968ab;
+  margin-top: 1em;
+}
+
+.input:focus{
+  outline: 1px solid yellow;
+
+}
+
+.warn {
+  outline: 1px solid rgba(255, 255, 0 ,1);
+}
+
+.correct {
+  outline: 1px solid rgba(0, 255, 0, 1);
+}
+
+.warn:focus {
+  outline: 1px solid rgba(255, 255, 0 ,1);
+}
+
+.correct:focus {
+  outline: 1px solid rgba(0, 255, 0, 1);
+}
+
+.icon{
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+  color: green;
+}
+.hidden {
+  display: none;
+}
+
+
+
+
+
