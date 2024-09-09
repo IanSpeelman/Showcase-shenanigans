@@ -1,0 +1,32 @@
+.search {
+  margin: 2em auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.input{
+  border-radius: 1em 0 0 1em;
+  padding: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: none;
+  width: 400px;
+}
+
+.input:focus{
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.5); 
+}
+
+.button{
+  border-radius: 0 1em 1em 0;
+  padding: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: #2968ab;
+  color: white;
+  font-weight: bold;
+}
+
+.button:hover{
+  background-color: #4187d1;
+}

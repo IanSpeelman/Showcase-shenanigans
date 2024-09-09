@@ -1,2 +1,4 @@
 *.txt
 showcase-shenanigans/node_modules
+Showcase-Shenanigans-api/bin
+Showcase-Shenanigans-api/obj

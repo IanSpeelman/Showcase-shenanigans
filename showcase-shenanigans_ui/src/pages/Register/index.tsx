@@ -22,25 +22,36 @@ const Register = () => {
 
   const passwordConstraints = specialCharacters && capitals && lowerCase && numbers && password.length >= 8
 
+  const register = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+  }
+
+
+
+
+
+
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
         <h1>Register!</h1>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={register}>
           <div className={styles.inputcontainer}>
-            <input className={`${styles.input} ${emailMatch && styles.correct} ${email.length && styles.warn}`} value={email} onChange={(e) => setEmail(e.target.value)} type="text" name="email" placeholder="E-Mail" />
+            <input className={`${styles.input} ${emailMatch && styles.correct} ${email.length && styles.warn}`} value={email} onChange={(e) => setEmail(e.target.value)} type="email" pattern={"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"} title="Please enter a valid E-mail" name="email" placeholder="E-Mail" required />
             <FontAwesomeIcon className={`${emailMatch ? styles.icon : styles.hidden}`} icon={faCheck} />
           </div>
           <div className={styles.inputcontainer}>
-            <input className={`${styles.input} ${email === confirmEmail && emailMatch && styles.correct} ${confirmEmail.length && styles.warn}`} value={confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} type="text" name="email-confirm" placeholder="Confirm your E-Mail" />
+            <input className={`${styles.input} ${email === confirmEmail && emailMatch && styles.correct} ${confirmEmail.length && styles.warn}`} value={confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} type="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid E-mail" name="email-confirm" placeholder="Confirm your E-Mail" required />
             <FontAwesomeIcon className={`${email === confirmEmail && email.length ? styles.icon : styles.hidden}`} icon={faCheck} />
           </div>
           <div className={styles.inputcontainer}>
-            <input className={`${styles.input} ${passwordConstraints && styles.correct} ${styles.warn}`} value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" placeholder="Password" />
+            <input className={`${styles.input} ${passwordConstraints && styles.correct} ${password.length && styles.warn}`} value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" placeholder="Password" />
             <FontAwesomeIcon className={passwordConstraints ? styles.icon : styles.hidden} icon={faCheck} />
           </div>
           <div className={styles.inputcontainer}>
-            <input className={`${styles.input} ${passwordConstraints && password === confirmPassword && styles.correct} ${styles.warn}`} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} type="password" name="password-confirm" placeholder="Confirm your Password" />
+            <input className={`${styles.input} ${passwordConstraints && password === confirmPassword && styles.correct} ${confirmPassword.length && styles.warn}`} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} type="password" name="password-confirm" placeholder="Confirm your Password" />
             <FontAwesomeIcon className={`${passwordConstraints && password === confirmPassword ? styles.icon : styles.hidden}`} icon={faCheck} />
           </div>
           <div className={styles.buttons}>

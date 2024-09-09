@@ -44,6 +44,7 @@
 
 .button:hover{
   background-color: #4187d1;
+
 }
 
 .buttons {
@@ -57,3 +58,18 @@
   margin-top: 1em;
 }
 
+.warn {
+  outline: 1px solid rgba(255, 255, 0 ,.8);
+}
+
+.correct {
+  outline: 1px solid rgba(0, 255, 0, .8);
+}
+
+.warn:focus {
+  outline: 1px solid rgba(255, 255, 0 ,.8);
+}
+
+.correct:focus {
+  outline: 1px solid rgba(0, 255, 0, .8);
+}

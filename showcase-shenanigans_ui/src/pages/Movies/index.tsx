@@ -1,25 +1,21 @@
 import MovieList from "./Components/MovieList"
 import { MovieType } from "../../types"
+import Search from "./Components/Search"
+import moviedata from "./movies.json"
+import { useState } from "react";
 
-const movies: MovieType[] = [
-  {
-    Image: "https://upload.wikimedia.org/wikipedia/en/2/23/Deadpool_%282016_poster%29.png",
-    Duration: 90,
-    Genre: "Comedy",
-    Description: "Awesome movie about stupid shit",
-    Title: "Deadpool",
-    YouTube_Trailer: "https://youtu.be/Xithigfg7dA?si=eomfmUweIBtpJe7c",
-    Age_Category: "R"
-  }
-]
+const movies: MovieType[] = moviedata;
 
 const Movies = () => {
-  return (
-    <>
 
-      <h2>Movies</h2>
-      <MovieList Movies={movies} />
-    </>
+  const [query, setQuery] = useState("")
+
+
+  return (
+    <div>
+      <Search query={query} setQuery={setQuery} />
+      <MovieList Movies={movies} query={query} />
+    </div>
   )
 }
 

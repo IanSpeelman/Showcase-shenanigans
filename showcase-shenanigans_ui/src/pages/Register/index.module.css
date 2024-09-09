@@ -71,18 +71,22 @@
 
 .warn {
   outline: 1px solid rgba(255, 255, 0 ,1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .correct {
   outline: 1px solid rgba(0, 255, 0, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .warn:focus {
   outline: 1px solid rgba(255, 255, 0 ,1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .correct:focus {
   outline: 1px solid rgba(0, 255, 0, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .icon{

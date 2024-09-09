@@ -1,0 +1,69 @@
+[
+  {
+    "Id": 2,
+  "Image": "https://m.media-amazon.com/images/M/MV5BY2EwYjJiMzMtZTAxYi00ZjMxLWEyODQtYTA5N2E5Y2E5MDZiXkEyXkFqcGdeQXVyNTUzODYyMDI@._V1_.jpg",
+  "Duration": 95,
+  "Genre": "Horror",
+  "Description": "A group of friends trapped in a haunted house.",
+  "Title": "Ghost Trap",
+  "Youtube_Trailer": "http://youtube.com/trailer2",
+  "Age_Category": 18
+  },
+
+  {
+    "Id": 3,
+  "Image": "https://upload.wikimedia.org/wikipedia/en/0/0c/Love_Is_in_the_Air_%282023_film%29_poster.jpg",
+  "Duration": 88,
+  "Genre": "Romance",
+  "Description": "A quirky love story in a small town.",
+  "Title": "Love in the Air",
+  "Youtube_Trailer": "http://youtube.com/trailer3",
+  "Age_Category": 13
+  },
+
+  {
+    "Id": 4,
+  "Image": "https://m.media-amazon.com/images/M/MV5BZDA5ZjIxMWItYTdlNC00ZGJmLTliYTctNWNhNDA1ZDQ2ZTQ1XkEyXkFqcGdeQXVyMTY5Nzc4MDY@._V1_.jpg",
+  "Duration": 100,
+  "Genre": "Adventure",
+  "Description": "A road trip with unexpected detours and surprises.",
+  "Title": "Detour Delight",
+  "Youtube_Trailer": "http://youtube.com/trailer4",
+  "Age_Category": 12
+  },
+
+  {
+    "Id": 5,
+  "Image": "https://m.media-amazon.com/images/M/MV5BYzFhODQ3YTYtZDUyZi00Y2Q4LTk3ZjYtMTFiNjg0NzQ4NDI0XkEyXkFqcGdeQXVyMTUyNjc3NDQ4._V1_FMjpg_UX1000_.jpg",
+  "Duration": 92,
+  "Genre": "Drama",
+  "Description": "A wedding that unravels family secrets.",
+  "Title": "Family Ties",
+  "Youtube_Trailer": "http://youtube.com/trailer5",
+  "Age_Category": 16
+  },
+
+  {
+    "Id": 6,
+  "Image": "https://www.tvguide.com/a/img/catalog/provider/1/2/1-12578586410.jpg",
+  "Duration": 85,
+  "Genre": "Thriller",
+  "Description": "Two roommates caught in a deadly game.",
+  "Title": "Deadly Roommates",
+  "Youtube_Trailer": "http://youtube.com/trailer6",
+  "Age_Category": 18
+  },
+
+  {
+    "Id": 7,
+  "Image": "https://consequence.net/wp-content/uploads/2014/10/fury-2014-movie-poster.jpg",
+  "Duration": 110,
+  "Genre": "Action",
+  "Description": "An undercover cop on a dangerous mission.",
+  "Title": "Undercover Fury",
+  "Youtube_Trailer": "http://youtube.com/trailer7",
+  "Age_Category": 16
+  }
+]
+
+
