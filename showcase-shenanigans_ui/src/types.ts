@@ -8,3 +8,16 @@ export type MovieType = {
   Youtube_Trailer: string,
   Age_Category: number
 }
+export type user = {
+  id: number,
+  email: string,
+  role: string,
+  firstName: string,
+  lastName: string,
+}
+export type jwtData = {
+  unique_name: string,
+  role: string,
+  FirstName: string,
+  LastName: string,
+}
