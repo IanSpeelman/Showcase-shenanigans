@@ -2,13 +2,14 @@ import styles from "./Search.module.css"
 
 type SearchProps = {
   query: string,
-  setQuery: React.Dispatch<React.SetStateAction<string>>
+  setQuery: React.Dispatch<React.SetStateAction<string>>,
+  admin: boolean,
 }
 
-const Search = ({ query, setQuery }: SearchProps) => {
+const Search = ({ query, setQuery, admin }: SearchProps) => {
   return (
     <div className={styles.search}>
-      <input className={styles.input} value={query} onChange={(e) => setQuery(e.target.value)} type="text" placeholder="Search!" />
+      <input className={`${styles.input} ${admin && styles.admin}`} value={query} onChange={(e) => setQuery(e.target.value)} type="text" placeholder="Search!" />
       <button className={styles.button}>Search!</button>
     </div>
   )
@@ -17,3 +18,4 @@ const Search = ({ query, setQuery }: SearchProps) => {
 
 
 export default Search
+

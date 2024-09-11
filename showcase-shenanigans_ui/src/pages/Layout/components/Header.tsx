@@ -1,8 +1,21 @@
 import { Link } from 'react-router-dom'
 import styles from './Header.module.css'
+import { user } from '../../../types'
 
 
-const Header = () => {
+type HeaderProps = {
+  user: user,
+  setUser: (arg0: user) => void
+}
+
+const Header = ({ setUser, user }: HeaderProps) => {
+  const logout = () => {
+    localStorage.removeItem("JWT_token")
+
+    setUser({ id: 0, email: "null", role: "null", firstName: "null", lastName: "null" })
+
+  }
+
   return (
     <>
       <header className={styles.header}>
@@ -14,7 +27,8 @@ const Header = () => {
           <li><Link to='/movies'>Movies</Link></li>
           <li><Link to='/theatres'>Theatres</Link></li>
           <li><Link to='/contact'>Contact</Link></li>
-          <li><Link to='/login'>Log in</Link></li>
+          {user.id == 0 && <li><Link to='/login'>Log in</Link></li>}
+          {user.id != 0 && <li onClick={logout}>Log out ({user.firstName})</li>}
         </ul>
       </nav>
     </>

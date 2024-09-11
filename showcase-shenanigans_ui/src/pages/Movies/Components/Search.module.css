@@ -1,8 +1,6 @@
 .search {
-  margin: 2em auto;
-  width: 100%;
+  width: 400px;
   display: flex;
-  justify-content: center;
 }
 
 .input{
@@ -29,4 +27,7 @@
 
 .button:hover{
   background-color: #4187d1;
+}
+.admin{
+  border-radius: 0;
 }
