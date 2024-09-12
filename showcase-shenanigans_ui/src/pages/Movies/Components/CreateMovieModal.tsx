@@ -20,11 +20,23 @@ const CreateMovieModal = ({ isOpen, setIsOpen }: CreateMovieModalProps) => {
     Image: "",
     Trailer: "",
     Age: 0,
+    Active: true,
   })
 
-  const handleSubmit = (e: SubmitEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(movieData)
+    const result = await fetch("http://localhost:5002/movie/new", {
+      method: "post",
+      headers: new Headers({
+        "Authorization": `bearer ${localStorage.getItem("JWT_token")}`,
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(movieData)
+    })
+    if (result.ok) {
+      setIsOpen(false)
+      setMovieData({ Title: "", Duration: 0, Genre: "", Description: "", Image: "", Trailer: "", Age: 0, Active: true })
+    }
   }
 
 
@@ -40,7 +52,7 @@ const CreateMovieModal = ({ isOpen, setIsOpen }: CreateMovieModalProps) => {
         </div>
         <div className={styles.inputcontainer}>
           <label htmlFor="duration">Duration</label>
-          <input id="duration" onChange={(e) => setMovieData({ ...movieData, Duration: parseInt(e.target.value) })} value={movieData.Duration} className={styles.input} type="number" placeholder="Duration (minutes)" />
+          <input id="duration" onChange={(e) => setMovieData({ ...movieData, Duration: parseInt(e.target.value) })} value={movieData.Duration} className={styles.input} type="number" placeholder="Duration (minutes)" min="0" />
         </div>
         <div className={styles.inputcontainer}>
           <label htmlFor="genre">Genre</label>
@@ -60,7 +72,11 @@ const CreateMovieModal = ({ isOpen, setIsOpen }: CreateMovieModalProps) => {
         </div>
         <div className={styles.inputcontainer}>
           <label htmlFor="age">Age</label>
-          <input id="age" onChange={(e) => setMovieData({ ...movieData, Age: parseInt(e.target.value) })} value={movieData.Age} className={styles.input} type="Number" placeholder="Age" />
+          <input id="age" onChange={(e) => setMovieData({ ...movieData, Age: parseInt(e.target.value) })} value={movieData.Age} className={styles.input} type="Number" placeholder="Age" min="0" />
+        </div>
+        <div className={styles.inputcontainer}>
+          <label htmlFor="active">Active?</label>
+          <input type='checkbox' id='active' onChange={(e) => setMovieData({ ...movieData, Active: e.target.checked })} checked={movieData.Active} />
         </div>
         <div className={styles.buttoncontainer}>
           <button className={styles.button}>Add new movie!</button>

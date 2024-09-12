@@ -17,8 +17,9 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("JWT_token")
     if (token) {
-      console.log("token present")
       const decodedToken = jwtDecode<JwtPayload & jwtData>(token)
+      console.log(decodedToken.exp)
+      console.log(Math.round(Date.now() / 1000))
       setUser({
         id: decodedToken.sub ? parseInt(decodedToken.sub) : 0,
         email: decodedToken.unique_name,
@@ -26,10 +27,6 @@ function App() {
         firstName: decodedToken.FirstName,
         lastName: decodedToken.LastName,
       })
-    }
-    else {
-
-      console.log("token not present")
     }
   }, [])
 
