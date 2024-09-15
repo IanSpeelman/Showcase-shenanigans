@@ -43,7 +43,7 @@ namespace Showcase_Shenanigans_api.Controllers
     [HttpGet("movie/all")]
     public JsonResult AllMovies()
     {
-      return new JsonResult(_context.Movies.ToList());
+      return new JsonResult(_context.Movies.ToList())!;
     }
 
     [HttpGet("movie/active")]
@@ -63,8 +63,8 @@ namespace Showcase_Shenanigans_api.Controllers
     [HttpPut("movie/edit/{id}")]
     public IActionResult EditMovie([FromBody] Movie Movie, int id)
     {
-      Movie EditMovie = _context.Movies.FirstOrDefault(m => m.Id == id);
-      if (Movie != null && Movie != null)
+      Movie EditMovie = _context.Movies.FirstOrDefault(m => m.Id == id)!;
+      if (Movie != null && EditMovie != null)
       {
         EditMovie.Image = Movie.Image;
         EditMovie.Duration = Movie.Duration;
