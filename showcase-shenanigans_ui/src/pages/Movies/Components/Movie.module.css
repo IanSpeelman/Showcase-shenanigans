@@ -12,11 +12,22 @@
   width: 200px;
 }
 .content {
+  width: 70%;
   padding: 1em 0;
+}
+.content > p {
+  margin-top: 1em;
+  overflow: hidden;
+  text-overflow: -;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  background: linear-gradient(0deg, rgba(2,0,36,0) 0%, rgba(0,0,0,1) 13%, rgba(0,0,0,1) 100%); 
+  color: transparent;
+  -webkit-background-clip: text;
 }
 .info{
   padding: 1em;
-  width:30%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -48,7 +59,7 @@
   margin-left: 3em;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .inactive{

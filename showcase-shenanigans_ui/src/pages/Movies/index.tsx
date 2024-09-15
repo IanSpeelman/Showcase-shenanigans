@@ -3,7 +3,7 @@ import { user } from "../../types"
 import Search from "./Components/Search"
 import { useEffect, useState } from "react";
 import styles from './index.module.css'
-import CreateMovieModal from "./Components/CreateMovieModal";
+import { Link } from "react-router-dom"
 
 type MoviesProps = {
   user: user,
@@ -11,7 +11,6 @@ type MoviesProps = {
 
 const Movies = ({ user }: MoviesProps) => {
 
-  const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState("")
   const [movies, setMovies] = useState([])
 
@@ -24,7 +23,6 @@ const Movies = ({ user }: MoviesProps) => {
       const result = await fetch(url)
       if (result.ok) {
         const movies = await result.json()
-        console.log(movies)
         setMovies(movies)
       }
 
@@ -36,11 +34,10 @@ const Movies = ({ user }: MoviesProps) => {
   return (
     <div className={styles.position}>
       <div className={styles.container}>
-        {user.role === "admin" && <button className={styles.button} onClick={() => setIsOpen(true)}>Add movie</button>}
+        {user.role === "admin" && <Link className={styles.button} to='/addmovie'>Add Movie</Link>}
         <Search query={query} admin={user.role === "admin"} setQuery={setQuery} />
       </div>
       <MovieList Movies={movies} query={query} user={user} />
-      {user.role === "admin" && <CreateMovieModal isOpen={isOpen} setIsOpen={setIsOpen} />}
     </div>
   )
 }

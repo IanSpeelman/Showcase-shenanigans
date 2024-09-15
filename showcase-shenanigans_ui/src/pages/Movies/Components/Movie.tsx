@@ -1,4 +1,4 @@
-import { MovieType, user } from "../../../types";
+import { Movie as MovieType } from "../../../types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
@@ -6,10 +6,9 @@ import styles from "./Movie.module.css"
 
 type MovieProps = {
   Movie: MovieType
-  user: user,
 }
 
-const Movie = ({ Movie, user }: MovieProps) => {
+const Movie = ({ Movie }: MovieProps) => {
 
 
   return (
@@ -27,8 +26,7 @@ const Movie = ({ Movie, user }: MovieProps) => {
             <p> {Movie.duration}min</p>
           </div>
           <p>Age: {Movie.age}</p>
-          <Link to={`/movie/${Movie.id}`} className={styles.button}>More info!</Link>
-          {user.role == "admin" && <Link to={`/movie/${Movie.id}/edit`} className={styles.button}>Edit!</Link>}
+          <Link to={`/movies/${Movie.id}`} className={styles.button}>More info!</Link>
         </div>
       </div>
     </div >

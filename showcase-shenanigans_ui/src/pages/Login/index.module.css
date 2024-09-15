@@ -27,6 +27,8 @@
   margin-bottom: 2em;
   border-radius: .4em;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: background-color 300ms;
+  transition: border 300ms;
 }
 
 .button{
@@ -38,6 +40,12 @@
   border: none;
   border-radius: .3em;
   font-weight: bold;
+}
+
+
+.error{
+  border: 1px solid rgba(255,0,0,0.4);
+  background-color: rgba(255,0,0,.1);
 }
 
 

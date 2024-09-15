@@ -11,7 +11,7 @@ namespace Showcase_Shenanigans_api.Data
     public string Trailer { get; set; } = null!;
     public int Age { get; set; }
     public bool Active { get; set; }
-
+    public string Thumbnail { get; set; } = null!;
 
   }
 }

@@ -1,13 +1,14 @@
-export type MovieType = {
+export type Movie = {
   id: number,
   image: string,
   duration: number,
   genre: string,
   description: string,
   title: string,
-  youtube_Trailer: string,
+  trailer: string,
   age: number,
-  active: boolean
+  active: boolean,
+  thumbnail: string,
 }
 export type user = {
   id: number,

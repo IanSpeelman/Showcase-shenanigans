@@ -17,11 +17,10 @@ namespace Showcase_Shenanigans_api.Controllers
 
     [Authorize]
     [HttpPost("/movie/new")]
-    public JsonResult NewMovie([FromBody] Movie Movie)
+    public IActionResult NewMovie([FromBody] Movie Movie)
     {
       if (User.FindFirst(ClaimTypes.Role)?.Value == "admin")
       {
-        Console.WriteLine($"=============================================={Movie.Description}");
         Movie newMovie = new()
         {
           Image = Movie.Image,
@@ -32,13 +31,13 @@ namespace Showcase_Shenanigans_api.Controllers
           Trailer = Movie.Trailer,
           Age = Movie.Age,
           Active = Movie.Active,
+          Thumbnail = Movie.Thumbnail,
         };
         _context.Add(newMovie);
         _context.SaveChanges();
-        Console.WriteLine("===============================you may now continue");
-        return new JsonResult(new { msg = "success" });
+        return Ok();
       }
-      return new JsonResult(new { msg = "logged in as a non admin" });
+      return StatusCode(304, "something went wrong");
     }
 
     [HttpGet("movie/all")]
@@ -54,9 +53,33 @@ namespace Showcase_Shenanigans_api.Controllers
     }
 
     [HttpGet("movie/{id}")]
-    public JsonResult AllMovies(int id)
+    public JsonResult SingleMovie(int id)
     {
       return new JsonResult(_context.Movies.FirstOrDefault(m => m.Id == id));
+    }
+
+
+    [Authorize]
+    [HttpPut("movie/edit/{id}")]
+    public IActionResult EditMovie([FromBody] Movie Movie, int id)
+    {
+      Movie EditMovie = _context.Movies.FirstOrDefault(m => m.Id == id);
+      if (Movie != null && Movie != null)
+      {
+        EditMovie.Image = Movie.Image;
+        EditMovie.Duration = Movie.Duration;
+        EditMovie.Genre = Movie.Genre;
+        EditMovie.Description = Movie.Description;
+        EditMovie.Title = Movie.Title;
+        EditMovie.Trailer = Movie.Trailer;
+        EditMovie.Age = Movie.Age;
+        EditMovie.Active = Movie.Active;
+        EditMovie.Thumbnail = Movie.Thumbnail;
+        _context.Update(EditMovie);
+        _context.SaveChanges();
+        return Ok();
+      }
+      return StatusCode(304, "something went wrong");
     }
 
 
