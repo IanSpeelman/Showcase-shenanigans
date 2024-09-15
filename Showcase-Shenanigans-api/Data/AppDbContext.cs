@@ -8,6 +8,8 @@ namespace Showcase_Shenanigans_api.Data
 
     public DbSet<Movie>? Movies { get; set; }
     public DbSet<User>? Users { get; set; }
+    public DbSet<MovieEvent>? MovieEvents { get; set; }
+
   }
 
 

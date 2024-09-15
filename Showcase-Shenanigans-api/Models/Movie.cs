@@ -1,6 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
 namespace Showcase_Shenanigans_api.Data
 {
-  public class Movie
+  public class Movie : Controller
   {
     public int Id { get; set; }
     public string Image { get; set; } = null!;
