@@ -46,6 +46,20 @@ namespace Showcase_Shenanigans_api.Controllers
       return StatusCode(404, "Event not found");
     }
 
+    [HttpGet("/event/movie/{id}")]
+    public IActionResult GetEvents(int id)
+    {
+      Movie Movie = _context.Movies.FirstOrDefault(Movie => Movie.Id == id);
+      if (Movie != null)
+      {
+        List<MovieEvent> Events = _context.MovieEvents.Where(Event => Event.Movie == Movie).ToList();
+        if (Events != null)
+        {
+          return Ok(Events);
+        }
+      }
+      return StatusCode(404, "Oops something went wrong");
+    }
 
 
 
