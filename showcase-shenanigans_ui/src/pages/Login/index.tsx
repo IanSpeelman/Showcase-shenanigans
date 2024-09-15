@@ -11,7 +11,7 @@ type LoginProps = {
 
 const Login = ({ setUser }: LoginProps) => {
   const navigate = useNavigate();
-
+  const [error, setError] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -46,8 +46,10 @@ const Login = ({ setUser }: LoginProps) => {
       navigate('/')
     }
     else {
-      console.log(response);
       setPassword('')
+      setError(true)
+      setTimeout(() => setError(false), 1000)
+
     }
   }
 
@@ -57,8 +59,8 @@ const Login = ({ setUser }: LoginProps) => {
       <div className={styles.card}>
         <h1>Log in!</h1>
         <form className={styles.form} onSubmit={HandleSubmit}>
-          <input className={styles.input} value={email} onChange={(e) => setEmail(e.target.value)} type="text" name="email" placeholder="E-Mail" />
-          <input className={styles.input} value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" placeholder="Password" />
+          <input className={`${styles.input} ${error && styles.error}`} value={email} onChange={(e) => setEmail(e.target.value)} type="text" name="email" placeholder="E-Mail" />
+          <input className={`${styles.input} ${error && styles.error}`} value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" placeholder="Password" />
           <div className={styles.buttons}>
             <button className={styles.button} type="submit">Log In</button>
             <Link to='/register' className={styles.link}>Don't have an account?</Link>

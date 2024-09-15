@@ -25,8 +25,8 @@ const Header = ({ setUser, user }: HeaderProps) => {
         <ul className={styles.ul}>
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/movies'>Movies</Link></li>
-          <li><Link to='/theatres'>Theatres</Link></li>
           <li><Link to='/contact'>Contact</Link></li>
+          {user.id !== 0 && <li><Link to='/profile'>Profile</Link></li>}
           {user.id == 0 && <li><Link to='/login'>Log in</Link></li>}
           {user.id != 0 && <li onClick={logout}>Log out ({user.firstName})</li>}
         </ul>

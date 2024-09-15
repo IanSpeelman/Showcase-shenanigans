@@ -1,30 +1,43 @@
 import MovieList from "./Components/MovieList"
-import { MovieType, user } from "../../types"
+import { user } from "../../types"
 import Search from "./Components/Search"
-import moviedata from "./movies.json"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from './index.module.css'
-import CreateMovieModal from "./Components/CreateMovieModal";
+import { Link } from "react-router-dom"
 
-const movies: MovieType[] = moviedata;
 type MoviesProps = {
   user: user,
 }
 
 const Movies = ({ user }: MoviesProps) => {
 
-  const [isOpen, setIsOpen] = useState(true)
   const [query, setQuery] = useState("")
+  const [movies, setMovies] = useState([])
+
+  useEffect(() => {
+    let url = "http://localhost:5002/movie/active";
+    if (user.role === "admin") {
+      url = "http://localhost:5002/movie/all"
+    }
+    const getData = async () => {
+      const result = await fetch(url)
+      if (result.ok) {
+        const movies = await result.json()
+        setMovies(movies)
+      }
+
+    }
+    getData()
+  }, [user.role])
 
 
   return (
     <div className={styles.position}>
       <div className={styles.container}>
-        {user.role === "admin" && <button className={styles.button} onClick={() => setIsOpen(true)}>Add movie</button>}
+        {user.role === "admin" && <Link className={styles.button} to='/addmovie'>Add Movie</Link>}
         <Search query={query} admin={user.role === "admin"} setQuery={setQuery} />
       </div>
-      <MovieList Movies={movies} query={query} />
-      {user.role === "admin" && <CreateMovieModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+      <MovieList Movies={movies} query={query} user={user} />
     </div>
   )
 }
