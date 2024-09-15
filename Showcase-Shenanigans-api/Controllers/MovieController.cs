@@ -41,21 +41,38 @@ namespace Showcase_Shenanigans_api.Controllers
     }
 
     [HttpGet("movie/all")]
-    public JsonResult AllMovies()
+    public IActionResult AllMovies()
     {
-      return new JsonResult(_context.Movies.ToList());
+      List<Movie> Movies = _context.Movies.ToList();
+      if (Movies != null)
+      {
+        return Ok(Movies);
+      }
+      return StatusCode(404, "Oops something weng wrong!");
     }
 
     [HttpGet("movie/active")]
-    public JsonResult ActiveMovies()
+    public IActionResult ActiveMovies()
     {
-      return new JsonResult(_context.Movies.Where(m => m.Active == true).ToList());
+      List<Movie> Movies = _context.Movies.Where(m => m.Active == true).ToList();
+      if (Movies != null)
+      {
+        return Ok(Movies);
+      }
+      return StatusCode(404, "Oops something went wrong!");
     }
 
     [HttpGet("movie/{id}")]
-    public JsonResult SingleMovie(int id)
+    public IActionResult SingleMovie(int id)
     {
-      return new JsonResult(_context.Movies.FirstOrDefault(m => m.Id == id));
+      Movie Movie = _context.Movies.FirstOrDefault(m => m.Id == id)!;
+      if (Movie != null)
+      {
+        return Ok(Movie);
+      }
+      return StatusCode(404, "Oops something went wrong");
+
+
     }
 
 
@@ -63,7 +80,7 @@ namespace Showcase_Shenanigans_api.Controllers
     [HttpPut("movie/edit/{id}")]
     public IActionResult EditMovie([FromBody] Movie Movie, int id)
     {
-      Movie EditMovie = _context.Movies.FirstOrDefault(m => m.Id == id);
+      Movie EditMovie = _context.Movies.FirstOrDefault(m => m.Id == id)!;
       if (Movie != null && Movie != null)
       {
         EditMovie.Image = Movie.Image;
@@ -79,7 +96,7 @@ namespace Showcase_Shenanigans_api.Controllers
         _context.SaveChanges();
         return Ok();
       }
-      return StatusCode(304, "something went wrong");
+      return StatusCode(304, "Oops something went wrong");
     }
 
 
