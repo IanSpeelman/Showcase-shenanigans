@@ -12,6 +12,7 @@ import MovieDetails from "./pages/Movies/Components/MovieDetails"
 import Profile from "./pages/Profile"
 import Contact from "./pages/Contact"
 import AddMovie from "./pages/Movies/Components/AddMovie"
+import AddSchedule from "./pages/Schedule/Index"
 
 function App() {
     const [user, setUser] = useState({ id: 0, email: "null", role: "null", firstName: "null", lastName: "null" })
@@ -44,6 +45,7 @@ function App() {
                         <Route path="register" element={<Register setUser={setUser} />} />
                         <Route path="addMovie" element={<AddMovie user={user} />} />
                         <Route path="movies/edit/:id" element={<AddMovie user={user} />} />
+                        <Route path="movies/schedule/:id" element={<AddSchedule user={user} />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
