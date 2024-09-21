@@ -1,0 +1,27 @@
+.container{
+    margin-left: 128px;
+    color: var(--black-100);
+}
+
+
+.items{
+    margin-bottom: 32px;
+}
+
+.heading{
+margin-bottom: 16px;
+}
+
+.date{
+    display: flex;
+}
+
+.title{
+    width: 100%;
+    text-align: center;
+}
+
+.sectiontitle{
+    font-size: 64px;
+    line-height: 64px;
+}

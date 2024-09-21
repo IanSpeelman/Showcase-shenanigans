@@ -1,0 +1,30 @@
+.container{
+    margin: 128px 128px;
+    margin-top: 0;
+    position: relative;
+    border-radius: 8px;
+    height: 592px;
+    overflow: hidden;
+}
+
+.thumbnail{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.filter{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: var(--white-50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play{ 
+    width: 80px;
+    height: 80px;
+}

@@ -1,0 +1,25 @@
+.container{
+    background: var(--primary-100);
+    padding: 2px;
+    border-radius: 8px;
+    margin-right: 32px;
+    position: relative;
+}
+
+.item{
+    background-color: white;
+    border-radius: inherit;
+    padding: 16px 48px;
+}
+
+.container:hover{
+    background: var(--brand-gradient-100);
+}
+
+.container:hover > .item{
+    background-color: var(--black-5-no-transparant);
+}
+
+.container:active > .item{
+    background-color: var(--black-10-no-transparant);
+}
