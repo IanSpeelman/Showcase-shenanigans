@@ -2,11 +2,19 @@ import { movie } from "../../../utils/types"
 import styles from "./MovieDetails.module.css"
 
 type MovieDetailsProps = {
-    Movie: movie
+    Movie: movie | null,
 }
 
 
 export default function MovieDetails({ Movie }: MovieDetailsProps) {
+
+
+
+    if (Movie === null) {
+        return <h2>Loading Movie Details...</h2>
+    }
+
+
     return (
         <div className={styles.container}>
             <img className={styles.image} src={Movie.image} alt={Movie.title} />

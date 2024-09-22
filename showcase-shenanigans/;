@@ -7,15 +7,6 @@ import ShowPage from './Pages/MovieShow'
 import { user } from './utils/types'
 import { useState, useEffect } from 'react'
 import { jwtDecode } from 'jwt-decode'
-import { JwtPayload } from 'jwt-decode'
-
-interface jwtData extends JwtPayload {
-    sub: string,
-    unique_name: string,
-    FirstName: string,
-    LastName: string,
-    role: string
-}
 
 function App() {
 
@@ -24,14 +15,15 @@ function App() {
     useEffect(() => {
         const token = localStorage.getItem("JWT_Token")
         if (token) {
-            const decodedToken = jwtDecode<jwtData>(token)
+            const decodedToken = jwtDecode(token)
+            console.log(decodedToken)
             setUser({
-                id: parseInt(decodedToken.sub),
-                email: decodedToken.unique_name,
-                firstname: decodedToken.FirstName,
-                lastname: decodedToken.LastName,
-                role: decodedToken.role
+                id: parseInt(decodedToken.sub)
+
             })
+        }
+        else {
+            console.log("token not present")
         }
     }, [])
 
@@ -41,7 +33,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<Layout user={user} setUser={setUser} />} >
                     <Route path="" element={<Home />} />
-                    <Route path="/movies" element={<Movies user={user} />} />
+                    <Route path="/movies" element={<Movies />} />
                     <Route path="/movies/:id" element={<ShowPage />} />
                     <Route path="/credits" element={<h1>Credits go here</h1>} />
                 </Route>

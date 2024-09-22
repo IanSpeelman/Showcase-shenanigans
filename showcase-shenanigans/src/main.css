@@ -24,6 +24,7 @@ h1,h2,h3,h4,h5,h6, button, input{
 
 :root{
     --primary-100: #A52020;
+    --primary-75: rgba(165, 32, 32, .75);
     --secondary-100: #C85C21;
     --brand-gradient-100: linear-gradient(90deg, rgba(165,32,32,1) 0%, rgba(200,92,33,1) 100%);
     --brand-gradient-85: linear-gradient(90deg, rgba(165,32,32,.85) 0%, rgba(200,92,33,.85) 100%);

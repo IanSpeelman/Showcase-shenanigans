@@ -18,3 +18,11 @@ export type schedule = {
     date: string,
     movie: movie
 }
+
+export type user = {
+    id: number,
+    email: string,
+    role: string,
+    firstname: string,
+    lastname: string,
+}
