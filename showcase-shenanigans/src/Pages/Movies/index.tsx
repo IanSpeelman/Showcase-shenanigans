@@ -12,13 +12,16 @@ type MovieProps = {
 export default function Movie({ user }: MovieProps) {
     const [AllMovies, setAllMovies] = useState<movie[] | null>(null)
     const [query, setQuery] = useState("")
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function getData() {
+            setLoading(true)
             const result = await fetch(`${import.meta.env.VITE_BASE_URL}/movie/active`)
             if (result.ok) {
                 const data = await result.json()
                 setAllMovies(data)
+                setLoading(false)
             }
         }
         getData()
@@ -32,7 +35,7 @@ export default function Movie({ user }: MovieProps) {
                 </div>
                 {user?.role === "admin" && <Link to="/movies/add" className={styles.button}>Add</Link>}
             </div>
-            <MovieList query={query} AllMovies={AllMovies} />
+            <MovieList query={query} loading={loading} AllMovies={AllMovies} />
         </div>
     )
 

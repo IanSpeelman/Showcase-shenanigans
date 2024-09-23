@@ -8,6 +8,7 @@ import { user } from './utils/types'
 import { useState, useEffect } from 'react'
 import { jwtDecode } from 'jwt-decode'
 import { JwtPayload } from 'jwt-decode'
+import MovieCreate from './Pages/MovieCreate'
 
 interface jwtData extends JwtPayload {
     sub: string,
@@ -42,7 +43,9 @@ function App() {
                 <Route path='/' element={<Layout user={user} setUser={setUser} />} >
                     <Route path="" element={<Home />} />
                     <Route path="/movies" element={<Movies user={user} />} />
-                    <Route path="/movies/:id" element={<ShowPage />} />
+                    <Route path="/movies/:id" element={<ShowPage user={user} />} />
+                    <Route path="/movies/add" element={<MovieCreate user={user} />} />
+                    <Route path="/movies/edit/:id" element={<MovieCreate user={user} />} />
                     <Route path="/credits" element={<h1>Credits go here</h1>} />
                 </Route>
             </Routes>

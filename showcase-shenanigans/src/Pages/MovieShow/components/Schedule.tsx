@@ -3,7 +3,7 @@ import { schedule } from "../../../utils/types"
 import ScheduleItem from "./ScheduleItem";
 
 type ScheduleProps = {
-    Schedule: schedule[],
+    Schedule: schedule[] | null,
 }
 
 const months: string[] = [
@@ -38,7 +38,7 @@ export default function Schedule({ Schedule }: ScheduleProps) {
     const sortedSchedule: schedule[][] = [];
     let month: number, day: number;
 
-    Schedule.filter(item => {
+    Schedule?.filter(item => {
         const date = new Date(item.date);
         if (date >= Today && date <= endDate) {
             if (month === date.getUTCMonth() && day === date.getUTCDate()) {

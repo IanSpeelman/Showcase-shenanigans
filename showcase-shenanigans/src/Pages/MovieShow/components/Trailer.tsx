@@ -1,19 +1,22 @@
 import { useState } from "react"
-import { movie } from "../../../utils/types"
+import { movie, user } from "../../../utils/types"
 import styles from "./Trailer.module.css"
+import { Link } from "react-router-dom"
 
 type TrailerProps = {
     Movie: movie | null,
+    user: user | null
 }
 
 
-export default function Trailer({ Movie }: TrailerProps) {
+export default function Trailer({ Movie, user }: TrailerProps) {
 
     const [play, setPlay] = useState(false)
     const [displayed, setDisplayed] = useState(true)
 
     if (play) {
         setTimeout(() => setDisplayed(false), 500)
+        console.log(user?.role)
     }
 
     if (Movie === null) {
@@ -26,6 +29,7 @@ export default function Trailer({ Movie }: TrailerProps) {
             <div className={`${styles.thumbnailContainer} ${!displayed && styles.none} ${play && styles.hide}`} onClick={() => setPlay(true)}>
                 <img className={styles.thumbnail} src={Movie.thumbnail} alt={Movie.title} />
                 <div className={styles.filter}>
+                    {user && user.role === "admin" && <Link className={styles.editbtn} to={`/movies/edit/${Movie.id}`}>Edit/Schedule</Link>}
                     <svg className={styles.play} stroke="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" id="play">
                         <defs>
                             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">

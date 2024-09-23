@@ -47,9 +47,21 @@
 
 .button{
     width: fit-content;
-    padding: 24px 48px;
+    padding: 16px 48px;
     border: none;
     background-color: var(--primary-100);
     border-radius: 8px;
     color: var(--white-100);
+    margin: 0 auto;
+    grid-column: 3/4;
+    text-decoration: none;
+    font-family: 'Sometype Mono', monospace;
+}
+
+.button:hover{
+    background: var(--brand-gradient-100);
+}
+
+.button:active{
+    background: var(--secondary-100);
 }

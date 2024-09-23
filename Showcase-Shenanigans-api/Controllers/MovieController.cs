@@ -35,7 +35,7 @@ namespace Showcase_Shenanigans_api.Controllers
                 };
                 _context.Add(newMovie);
                 _context.SaveChanges();
-                return Ok();
+                return Ok(new { id = newMovie.Id });
             }
             return StatusCode(304, "something went wrong");
         }
@@ -94,7 +94,7 @@ namespace Showcase_Shenanigans_api.Controllers
                 EditMovie.Thumbnail = Movie.Thumbnail;
                 _context.Update(EditMovie);
                 _context.SaveChanges();
-                return Ok();
+                return Ok(new { id = id });
             }
             return StatusCode(304, "Oops something went wrong");
         }

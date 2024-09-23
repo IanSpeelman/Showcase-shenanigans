@@ -52,7 +52,7 @@ namespace Showcase_Shenanigans_api.Controllers
             Movie Movie = _context.Movies.FirstOrDefault(Movie => Movie.Id == id)!;
             if (Movie != null)
             {
-                List<MovieEvent> Events = _context.MovieEvents.Where(Event => Event.Movie == Movie).ToList();
+                List<MovieEvent> Events = _context.MovieEvents.Where(Event => Event.Movie == Movie).OrderBy(e => e.Date).ToList();
                 if (Events != null)
                 {
                     return Ok(Events);
@@ -62,7 +62,7 @@ namespace Showcase_Shenanigans_api.Controllers
         }
 
         [Authorize]
-        [HttpPost("/event/edit/{id}")]
+        [HttpPut("/event/edit/{id}")]
         public IActionResult EditEvent(int id, [FromBody] RequestMovieEvent Event)
         {
             MovieEvent EditEvent = _context.MovieEvents.FirstOrDefault(e => e.Id == id)!;
