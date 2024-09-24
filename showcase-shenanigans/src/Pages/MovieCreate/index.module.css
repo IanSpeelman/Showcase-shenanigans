@@ -12,8 +12,8 @@
     padding-top: 0;
 }
 
-.column:first-of-type{
-    border-right: 1px solid var(--black-25);
+.column:nth-of-type(2){
+    border-left: 1px solid var(--black-25);
 }
 
 .inputitem{

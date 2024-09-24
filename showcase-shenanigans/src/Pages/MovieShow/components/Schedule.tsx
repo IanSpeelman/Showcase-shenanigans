@@ -1,9 +1,11 @@
 import styles from "./Schedule.module.css"
-import { schedule } from "../../../utils/types"
+import { schedule, user } from "../../../utils/types"
 import ScheduleItem from "./ScheduleItem";
 
 type ScheduleProps = {
     Schedule: schedule[] | null,
+    user: user | null
+    setHidden: (arg0: boolean) => void
 }
 
 const months: string[] = [
@@ -22,17 +24,17 @@ const months: string[] = [
 ];
 
 
-export default function Schedule({ Schedule }: ScheduleProps) {
+export default function Schedule({ setHidden, Schedule, user }: ScheduleProps) {
     const Today = new Date();
     const endDate = new Date();
-    const daysOfMonth = new Date(Date.UTC(Today.getUTCFullYear(), Today.getUTCMonth() + 1, 0)).getUTCDate();
+    const daysOfMonth = new Date(Date.UTC(Today.getFullYear(), Today.getMonth() + 1, 0)).getDate();
     const daysToShow = 4;
 
-    if (endDate.getUTCDate() + daysToShow > daysOfMonth) {
-        endDate.setUTCDate((endDate.getUTCDate() + daysToShow) % daysOfMonth);
-        endDate.setUTCMonth((endDate.getUTCMonth() + 1) % 12);
+    if (endDate.getDate() + daysToShow > daysOfMonth) {
+        endDate.setDate((endDate.getDate() + daysToShow) % daysOfMonth);
+        endDate.setMonth((endDate.getMonth() + 1) % 12);
     } else {
-        endDate.setUTCDate(endDate.getUTCDate() + daysToShow);
+        endDate.setDate(endDate.getDate() + daysToShow);
     }
 
     const sortedSchedule: schedule[][] = [];
@@ -41,11 +43,11 @@ export default function Schedule({ Schedule }: ScheduleProps) {
     Schedule?.filter(item => {
         const date = new Date(item.date);
         if (date >= Today && date <= endDate) {
-            if (month === date.getUTCMonth() && day === date.getUTCDate()) {
+            if (month === date.getMonth() && day === date.getDate()) {
                 sortedSchedule[sortedSchedule.length - 1].push(item);
             } else {
-                month = date.getUTCMonth();
-                day = date.getUTCDate();
+                month = date.getMonth();
+                day = date.getDate();
                 sortedSchedule.push([item]);
             }
         }
@@ -62,11 +64,11 @@ export default function Schedule({ Schedule }: ScheduleProps) {
                 const currentDate = new Date(date[0].date)
                 return (
                     <div key={date[0].id} className={styles.items}>
-                        {currentDate.getUTCDate() === Today.getUTCDate() && <h2 className={styles.heading}>Today:</h2>}
-                        {currentDate.getUTCDate() === (Today.getUTCDate() + 1) % daysOfMonth && <h2 className={styles.heading}>Tomorrow:</h2>}
-                        {(currentDate.getUTCDate() > Today.getUTCDate() + 1 || currentDate.getDate() < Today.getDate()) && <h2 className={styles.heading}>{months[currentDate.getMonth()]} {currentDate.getDate()}</h2>}
+                        {currentDate.getDate() === Today.getDate() && <h2 className={styles.heading}>Today:</h2>}
+                        {currentDate.getDate() === (Today.getDate() + 1) % daysOfMonth && <h2 className={styles.heading}>Tomorrow:</h2>}
+                        {(currentDate.getDate() > Today.getDate() + 1 || currentDate.getDate() < Today.getDate()) && <h2 className={styles.heading}>{months[currentDate.getMonth()]} {currentDate.getDate()}</h2>}
                         <div className={styles.date}>
-                            {date.map(item => <ScheduleItem key={item.id} Item={item} />)}
+                            {date.map(item => <ScheduleItem setHidden={setHidden} user={user} key={item.id} Item={item} />)}
                         </div>
                     </div>
                 )

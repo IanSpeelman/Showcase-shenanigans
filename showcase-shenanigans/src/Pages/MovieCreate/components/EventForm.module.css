@@ -11,7 +11,12 @@
 
 .datepicker {
     padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--black-25);
+    width: 230px;
+    text-align: center;
 }
+
 
 .icon{
     width: 32px;

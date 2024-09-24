@@ -14,6 +14,7 @@ export default function MovieCreate({ user }: MovieCreateProps) {
     const { id } = useParams()
     const navigate = useNavigate();
     const [movie, setMovie] = useState<movie>({ id: 0, title: "", image: "", thumbnail: "", trailer: "", genre: "", age: 0, duration: 0, description: "", active: true })
+    const [reload, setReload] = useState(0)
     let url = `${import.meta.env.VITE_BASE_URL}/movie/new`
     let method = "post"
     if (id) {
@@ -38,7 +39,7 @@ export default function MovieCreate({ user }: MovieCreateProps) {
             }
         }
         getData()
-    }, [id])
+    }, [id, reload])
 
 
 
@@ -90,8 +91,9 @@ export default function MovieCreate({ user }: MovieCreateProps) {
             {id ? (
                 <div className={styles.column}>
                     <h1 className={styles.heading}>Edit Schedule</h1>
-                    {events?.map((event: schedule) => <EventForm event={event} movieId={movie.id} />)}
-                    <EventForm event={null} movieId={movie.id} />
+                    {events?.map((event: schedule) => <EventForm setReload={setReload} reload={reload} event={event} movieId={movie.id} />)}
+                    <h1>Add new Event</h1>
+                    <EventForm setReload={setReload} reload={reload} event={null} movieId={movie.id} />
                 </div>
             ) : null}
         </div>

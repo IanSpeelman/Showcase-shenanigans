@@ -51,6 +51,7 @@ export default function UserOverlay({ hidden, setHidden, user, setUser }: UserOv
             body: JSON.stringify(body)
         })
 
+
         if (result.ok) {
             const data = await result.json();
             localStorage.setItem("JWT_Token", data.token)
@@ -64,8 +65,8 @@ export default function UserOverlay({ hidden, setHidden, user, setUser }: UserOv
     }
 
     function handleLogout() {
-        setUser(null);
         localStorage.removeItem("JWT_Token")
+        setUser(null);
     }
 
     if (user) return (

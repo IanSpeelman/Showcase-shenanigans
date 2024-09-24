@@ -17,7 +17,7 @@ export default function Movie({ user }: MovieProps) {
     useEffect(() => {
         async function getData() {
             setLoading(true)
-            const result = await fetch(`${import.meta.env.VITE_BASE_URL}/movie/active`)
+            const result = await fetch(`${import.meta.env.VITE_BASE_URL}/movie/${user && user.role === "admin" ? "all" : "active"}`)
             if (result.ok) {
                 const data = await result.json()
                 setAllMovies(data)
@@ -25,7 +25,7 @@ export default function Movie({ user }: MovieProps) {
             }
         }
         getData()
-    }, [])
+    }, [user])
 
     return (
         <div>

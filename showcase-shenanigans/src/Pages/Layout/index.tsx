@@ -3,6 +3,7 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import styles from './index.module.css'
 import { user } from "../../utils/types"
+import { useState } from "react"
 
 type LayoutProps = {
     user: user | null,
@@ -11,11 +12,12 @@ type LayoutProps = {
 
 
 export default function Layout({ user, setUser }: LayoutProps) {
+    const [hidden, setHidden] = useState(true)
 
     return (
         <div className={styles.contentWrapper}>
-            <Header user={user} setUser={setUser} />
-            <Outlet />
+            <Header hidden={hidden} setHidden={setHidden} user={user} setUser={setUser} />
+            <Outlet context={[setHidden]} />
             <Footer />
         </div>
     )

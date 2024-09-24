@@ -2,18 +2,18 @@ import { Link } from "react-router-dom";
 import logo from "../../../../Assets/logo.png"
 import styles from "./index.module.css"
 import UserOverlay from "./components/UserOverlay";
-import { useState } from "react";
 import { user } from "../../../../utils/types";
 
 
 type HeaderProps = {
     user: user | null,
     setUser: (arg0: user | null) => void,
+    hidden: boolean,
+    setHidden: (arg0: boolean) => void
 }
 
 
-export default function Header({ user, setUser }: HeaderProps) {
-    const [hidden, setHidden] = useState(true)
+export default function Header({ hidden, setHidden, user, setUser }: HeaderProps) {
 
 
 

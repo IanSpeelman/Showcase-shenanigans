@@ -5,6 +5,8 @@ import { schedule } from "../../utils/types";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { user } from "../../utils/types";
+import styles from "./index.module.css"
+import { useOutletContext } from "react-router-dom";
 
 type ShowPageProps = {
     user: user | null
@@ -12,8 +14,9 @@ type ShowPageProps = {
 
 
 export default function ShowPage({ user }: ShowPageProps) {
-
+    const [setHidden] = useOutletContext<[(arg0: boolean) => void]>();
     const [movie, setMovie] = useState(null)
+    const [loading, setLoading] = useState(true)
     const [ScheduleList, setScheduleList] = useState<schedule[] | null>(null)
     const { id } = useParams();
 
@@ -29,17 +32,24 @@ export default function ShowPage({ user }: ShowPageProps) {
                 const data = await res.json();
                 setScheduleList(data)
             }
+            setLoading(false)
         }
         getData()
     }, [id])
 
-
+    if (!loading && !movie) {
+        return (
+            <div className={styles.notfound}>
+                <h1>Movie not found...</h1>
+            </div>
+        )
+    }
 
     return (
         <div>
             <Trailer Movie={movie} user={user} />
             <MovieDetails Movie={movie} />
-            <Schedule Schedule={ScheduleList} />
+            <Schedule setHidden={setHidden} Schedule={ScheduleList} user={user} />
         </div>
     )
 }

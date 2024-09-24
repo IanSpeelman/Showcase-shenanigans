@@ -1,17 +1,19 @@
 import { useState, useRef, useEffect } from "react"
-import { schedule } from "../../../utils/types"
+import { schedule, user } from "../../../utils/types"
 import styles from './BookingModal.module.css'
 
 
 type BookingModalProps = {
+    user: user | null
     Event: schedule,
     showModal: boolean,
-    setShowModal: (arg0: boolean) => void
+    setShowModal: (arg0: boolean) => void,
+    setHidden: (arg0: boolean) => void
 }
 
 
 
-export default function BookingModal({ Event, showModal, setShowModal }: BookingModalProps) {
+export default function BookingModal({ setHidden, user, Event, showModal, setShowModal }: BookingModalProps) {
 
     const date = new Date(Event.date)
     const [count, setCount] = useState(1);
@@ -36,13 +38,17 @@ export default function BookingModal({ Event, showModal, setShowModal }: Booking
 
     }, [showModal, setShowModal])
 
+    function handleLogin() {
+        setHidden(false)
+        window.scroll(0, 0)
+    }
 
 
 
-    return (
+    if (user) return (
         <div className={`${styles.container} ${!showModal && styles.hidden}`} ref={modalRef}>
             <div className={styles.header}>
-                <h5>{Event.movie.title} - {date.getUTCHours()}:{date.getUTCMinutes()}</h5>
+                <h5>{Event.movie.title} - {date.getHours() < 10 ? `0${date.getHours()}` : date.getHours()}:{date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes()}</h5>
             </div>
             <div className={styles.controls}>
                 <span className={styles.controlButton} onClick={() => setCount(count - 1 > 1 ? count - 1 : 1)}>-</span>
@@ -54,5 +60,13 @@ export default function BookingModal({ Event, showModal, setShowModal }: Booking
             <button className={styles.button}>Reserve</button>
         </div>
     )
+
+    return (
+        <div className={`${styles.container} ${!showModal && styles.hidden}`} ref={modalRef}>
+            <h3 onClick={handleLogin}>Please login!</h3>
+        </div>
+    )
+
+
 }
 

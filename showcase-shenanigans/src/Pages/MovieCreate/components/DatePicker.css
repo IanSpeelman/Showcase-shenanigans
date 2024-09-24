@@ -258,12 +258,15 @@
 .numInputWrapper span {
   position: absolute;
   right: 0;
-  width: 14px;
+  width: 32px;
   padding: 0 4px 0 2px;
   height: 50%;
   line-height: 50%;
   opacity: 0;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid rgba(165,32,32,1);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
