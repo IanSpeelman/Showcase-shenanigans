@@ -35,7 +35,7 @@ namespace Showcase_Shenanigans_api.Controllers
                 };
                 _context.Add(newMovie);
                 _context.SaveChanges();
-                return Ok();
+                return Ok(new { id = newMovie.Id });
             }
             return StatusCode(304, "something went wrong");
         }
@@ -80,21 +80,24 @@ namespace Showcase_Shenanigans_api.Controllers
         [HttpPut("movie/edit/{id}")]
         public IActionResult EditMovie([FromBody] Movie Movie, int id)
         {
-            Movie EditMovie = _context.Movies.FirstOrDefault(m => m.Id == id)!;
-            if (Movie != null && EditMovie != null)
+            if (User.FindFirst(ClaimTypes.Role)?.Value == "admin")
             {
-                EditMovie.Image = Movie.Image;
-                EditMovie.Duration = Movie.Duration;
-                EditMovie.Genre = Movie.Genre;
-                EditMovie.Description = Movie.Description;
-                EditMovie.Title = Movie.Title;
-                EditMovie.Trailer = Movie.Trailer;
-                EditMovie.Age = Movie.Age;
-                EditMovie.Active = Movie.Active;
-                EditMovie.Thumbnail = Movie.Thumbnail;
-                _context.Update(EditMovie);
-                _context.SaveChanges();
-                return Ok();
+                Movie EditMovie = _context.Movies.FirstOrDefault(m => m.Id == id)!;
+                if (Movie != null && EditMovie != null)
+                {
+                    EditMovie.Image = Movie.Image;
+                    EditMovie.Duration = Movie.Duration;
+                    EditMovie.Genre = Movie.Genre;
+                    EditMovie.Description = Movie.Description;
+                    EditMovie.Title = Movie.Title;
+                    EditMovie.Trailer = Movie.Trailer;
+                    EditMovie.Age = Movie.Age;
+                    EditMovie.Active = Movie.Active;
+                    EditMovie.Thumbnail = Movie.Thumbnail;
+                    _context.Update(EditMovie);
+                    _context.SaveChanges();
+                    return Ok(new { id = id });
+                }
             }
             return StatusCode(304, "Oops something went wrong");
         }

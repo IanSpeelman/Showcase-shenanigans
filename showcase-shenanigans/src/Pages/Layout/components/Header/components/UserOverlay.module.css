@@ -1,0 +1,75 @@
+.overlay{
+    border: 1px solid var(--black-10);
+    border-radius: 8px;
+    background: white;
+    padding: 16px;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    gap:16px;
+    border-bottom: 1px solid var(--black-10);
+    text-decoration: none;
+    padding: 0 16px;
+}
+
+.row:has(input), .row:has(button){
+    border-bottom: none;
+}
+
+.icon{
+    padding: 8px 0;
+    width: 48px;
+    height: 48px;
+    color: var(--black-100);
+}
+
+.text{
+    width: max-content;
+    color: var(--black-100);
+}
+
+.textcenter{
+    display:block;
+    width: 100%;
+    color: var(--black-100);
+    text-align: center;
+}
+
+.input{
+    width: 248px;
+    text-align: center;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--black-10);
+    background-color: var(--black-5);
+    color: var(--black-75);
+    margin-bottom: 16px;
+}
+
+.button{
+    width: 100%;
+    padding: 24px 48px;
+    border: none;
+    background-color: var(--primary-100);
+    border-radius: 8px;
+    color: var(--white-100);
+}
+
+.button:hover{
+    background: var(--brand-gradient-100);
+}
+
+.button:active{
+    background: var(--secondary-100);
+}
+.mobile{
+    display: none;
+}
+
+@media screen and (max-width: 600px){
+    .mobile{
+        display: flex;
+    }
+}

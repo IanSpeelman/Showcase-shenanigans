@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap');
+
+
+body{
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+p, a, li{
+    font-family: Archivo, sans-serif;
+    font-size: 21px;
+    line-height: 41px;
+}
+
+h1,h2,h3,h4,h5,h6, button, input, label, textarea{
+    font-family: 'Sometype Mono', monospace;
+    font-weight: bold;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary-100: #A52020;
+    --primary-75: rgba(165, 32, 32, .75);
+    --secondary-100: #C85C21;
+    --brand-gradient-100: linear-gradient(90deg, rgba(165,32,32,1) 0%, rgba(200,92,33,1) 100%);
+    --brand-gradient-85: linear-gradient(90deg, rgba(165,32,32,.85) 0%, rgba(200,92,33,.85) 100%);
+    --black-100: #453939;
+    --black-75: rgba(69, 57, 57, .75);
+    --black-50: rgba(69, 57, 57, .5);
+    --black-25: rgba(69, 57, 57, .25);
+    --black-10: rgba(69, 57, 57, .1);
+    --black-5: rgba(69, 57, 57, .05);
+    --white-100: #e6e6e6;
+    --white-50: rgba(230,230,230,.5);
+    --black-5-no-transparant: #F6F5F5;
+    --black-10-no-transparant: #ECEBEB;
+}

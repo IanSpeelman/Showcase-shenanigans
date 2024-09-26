@@ -1,0 +1,58 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 64px;
+    border-bottom: 1px solid var(--black-25);
+    margin-bottom: 64px;
+}
+
+.logo{
+    height: 64px;
+}
+
+.navigation{
+    display: flex;
+    align-items:center;
+    gap: 64px;
+}
+
+.link{
+    font-size: 31px;
+    line-height: 30px;
+    color: var(--black-100);
+    text-decoration: none;
+}
+
+.profile{
+    height: 64px;
+    stroke: var(--primary-100);
+    position: relative;
+}
+
+.anchor{
+    position: relative;
+}
+
+.hidden{
+    display: none;
+}
+
+.overlay{
+    top:120%;
+    right: 0;
+    z-index: 1;
+    position: absolute;
+}
+
+@media screen and (max-width: 600px) {
+    
+.link{
+    display: none;
+}
+
+.header{
+    padding: 32px;
+}
+
+}
