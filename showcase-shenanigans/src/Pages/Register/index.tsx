@@ -42,6 +42,7 @@ export default function Register() {
 
     return (
         <div className={styles.container}>
+            <h1>Register!</h1>
             <div className={styles.inputcontainer}>
                 <input className={styles.input} type="text" placeholder="First name" id="firstname" value={user.firstname} onChange={(e) => setUser({ ...user, firstname: e.target.value })} required />
                 <input className={styles.input} type="text" placeholder="Last name" id="lastname" value={user.lastname} onChange={(e) => setUser({ ...user, lastname: e.target.value })} required />

@@ -22,6 +22,7 @@
 }
 
 .info{
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -42,5 +43,55 @@
 .icon{
     height: 24px;
     width: 24px;
-} .property{
+}
+
+@media screen and (max-width: 1200px){
+
+.title{
+    margin-top: 64px;
+}
+
+
+.container{
+    width: 100%;
+    padding: 32px;
+    gap: 0;
+}
+
+    .properties{
+        margin-top: 32px;
+        flex-direction: column;
+        gap: 32px;
+        align-items: flex-start;
+    }
+}
+
+@media screen and (max-width: 1000px){
+
+.container{
+    flex-direction: column;
+    width: 100%;
+}
+
+.properties{
+    align-items: center;
+    flex-direction: row;
+}
+
+.image{
+    margin: 0 auto;
+}
+
+}
+
+@media screen and (max-width: 1000px){
+
+.container{
+    width: 100%;
+}
+
+.properties{
+    flex-direction: column;
+}
+
 }

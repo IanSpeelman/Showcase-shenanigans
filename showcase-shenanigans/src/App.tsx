@@ -10,6 +10,7 @@ import { jwtDecode } from 'jwt-decode'
 import { JwtPayload } from 'jwt-decode'
 import MovieCreate from './Pages/MovieCreate'
 import Register from './Pages/Register'
+import Bookings from './Pages/Bookings'
 
 interface jwtData extends JwtPayload {
     sub: string,
@@ -27,13 +28,17 @@ function App() {
         const token = localStorage.getItem("JWT_Token")
         if (token) {
             const decodedToken = jwtDecode<jwtData>(token)
-            setUser({
-                id: parseInt(decodedToken.sub),
-                email: decodedToken.unique_name,
-                firstname: decodedToken.FirstName,
-                lastname: decodedToken.LastName,
-                role: decodedToken.role
-            })
+            const now = new Date()
+
+            if (decodedToken && decodedToken.exp && Date.parse(now.toString()) / 1000 < decodedToken!.exp) {
+                setUser({
+                    id: parseInt(decodedToken.sub),
+                    email: decodedToken.unique_name,
+                    firstname: decodedToken.FirstName,
+                    lastname: decodedToken.LastName,
+                    role: decodedToken.role
+                })
+            }
         }
     }, [])
 
@@ -47,8 +52,8 @@ function App() {
                     <Route path="/movies/:id" element={<ShowPage user={user} />} />
                     <Route path="/movies/add" element={<MovieCreate user={user} />} />
                     <Route path="/movies/edit/:id" element={<MovieCreate user={user} />} />
-                    <Route path="/credits" element={<h1>Credits go here</h1>} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/bookings" element={<Bookings user={user} />} />
 
                 </Route>
             </Routes>

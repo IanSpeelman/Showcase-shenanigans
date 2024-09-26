@@ -1,0 +1,32 @@
+.component{
+    margin: 0 128px;
+    color: var(--black-100);
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap
+}
+
+
+@media screen and (max-width: 1000px){
+
+.component{
+    margin: 0 0;
+}
+
+
+
+
+}
+@media screen and (max-width: 1000px){
+.component{
+    margin: 0 64px;
+}
+.container{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+}

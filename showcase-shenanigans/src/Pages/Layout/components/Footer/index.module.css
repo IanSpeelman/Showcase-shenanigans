@@ -2,12 +2,14 @@
     margin-top: 64px;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     padding: 32px 0;
     border-top: 1px solid var(--black-25);
 }
 
 .text{
+    width: 100%;
+    text-align: center;
     color: var(--black-100);
 }
 
@@ -19,3 +21,10 @@
     color: var(--primary-100);
 }
 
+@media screen and (max-width: 600px){
+    .footer{
+    }
+
+    .text{
+    } 
+}

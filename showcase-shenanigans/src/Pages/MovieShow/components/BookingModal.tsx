@@ -20,7 +20,6 @@ export default function BookingModal({ setHidden, user, Event, showModal, setSho
     const modalRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-
         const handleClick = (e: MouseEvent) => {
             const target = e.target as HTMLDivElement
             if (modalRef.current && !modalRef.current.contains(target)) {
@@ -31,16 +30,28 @@ export default function BookingModal({ setHidden, user, Event, showModal, setSho
         if (showModal) {
             document.addEventListener('mousedown', handleClick)
         }
-
         else {
             document.removeEventListener('mousedown', handleClick)
         }
-
     }, [showModal, setShowModal])
 
     function handleLogin() {
         setHidden(false)
         window.scroll(0, 0)
+    }
+
+    async function handleBooking() {
+
+        if (user) {
+            const result = await fetch(`${import.meta.env.VITE_BASE_URL}/booking/new`, {
+                method: "post",
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('JWT_Token')}`,
+                    'Content-Type': 'Application/json'
+                },
+                body: JSON.stringify({ userId: user.id, eventId: Event.id, amount: count })
+            })
+        }
     }
 
 
@@ -57,7 +68,7 @@ export default function BookingModal({ setHidden, user, Event, showModal, setSho
                 {count === 1 && <p>person</p>}
                 {count !== 1 && <p>people</p>}
             </div>
-            <button className={styles.button}>Reserve</button>
+            <button className={styles.button} onClick={handleBooking}>Reserve</button>
         </div>
     )
 

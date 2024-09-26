@@ -26,3 +26,10 @@ export type user = {
     firstname: string,
     lastname: string,
 }
+
+export type booking = {
+    id: number,
+    event: schedule,
+    user: user,
+    amount: number
+}

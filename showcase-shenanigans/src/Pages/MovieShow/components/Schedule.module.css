@@ -1,5 +1,5 @@
 .container{
-    margin-left: 128px;
+    margin: 0 128px;
     color: var(--black-100);
 }
 
@@ -14,6 +14,8 @@ margin-bottom: 16px;
 
 .date{
     display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 .title{
@@ -24,4 +26,20 @@ margin-bottom: 16px;
 .sectiontitle{
     font-size: 64px;
     line-height: 64px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .container{
+        margin: 0;
+        text-align: center;
+    }
+
+    .date{
+        width: 300px;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    
 }

@@ -65,3 +65,32 @@
 .button:active{
     background: var(--secondary-100);
 }
+
+
+@media screen and (max-width: 600px) {
+.hero{
+    margin: 0;
+}
+    
+
+
+
+
+}
+
+
+
+@media screen and (max-width: 900px) {
+.textcontainer{
+    width: 100%;
+    margin-left: 0; 
+    padding: 16px;
+}
+
+.overlay{
+        background: rgba(217,217,217,.7);
+}
+
+}
+
+
